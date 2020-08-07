@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_kbzpay/flutter_kbzpay.dart';
-import 'package:flutter_kbzpay_example/success.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,13 +17,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     FlutterKbzpay.onPayStatus().listen((data) {
       print('onPayStatus $data');
-      print(data['status']);
-      if (data['status'] == 1) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) {
-          return Success();
-        }));
-      }
     });
     super.initState();
   }
@@ -45,7 +37,8 @@ class _MyAppState extends State<MyApp> {
                       appId: "",
                       appKey: "",
                       merchantCode: "",
-                      prepayId: ""
+                      prepayId: "",
+                      urlScheme: "FlutterKbzPay"
                   ).then((value) => { print(value) });
                 },
                 child: Text("Start Pay"),

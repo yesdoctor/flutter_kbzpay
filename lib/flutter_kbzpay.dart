@@ -30,6 +30,7 @@ class FlutterKbzpay {
     @required appKey,
     @required merchantCode,
     @required prepayId,
+    urlScheme
   }) async {
     if (prepayId == null ||
         merchantCode == null ||
@@ -42,7 +43,8 @@ class FlutterKbzpay {
       'appId': appId,
       'appKey': appKey,
       'merchantCode': merchantCode,
-      'prepayId': prepayId
+      'prepayId': prepayId,
+      'urlScheme' : urlScheme
     };
 
     final String result = await _channel.invokeMethod('startPay', params);
